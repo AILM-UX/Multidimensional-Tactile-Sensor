@@ -8,40 +8,28 @@
   
   Sensor model, fabrication method, control code, and model code. The following two images show the structure and prototype of our sensor.
 <div align=center>
-<img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/main/figure/fig1a.jpg" alt="Image text" width="250" height="200"/>     <img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/main/figure/fig1b.jpg" alt="Image text" width="250" height="200"/>
+<img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/blob/main/figure/fig1a.jpg" alt="Image text" width="600" height="550"/>     <img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/blob/main/figure/fig1b.jpg" alt="Image text" width="400" height="350"/> 
 </div>
 
-In this work, the framework we propose consists of two main component. The first part is the ST attention-based VTDF module, which enables organic interaction and fusion of input visual and tactile data, generating fused visual-tactile features that are fully interacted in terms of inter-modal and ST information. The second part is the cross-task attention-driven MTL module. The fused visual-tactile features obtained from the first part serve as shared features within the MTL module, facilitating inter-task information interaction and fusion to output recognition results for multiple object attributes.
 
-![image](https://github.com/AILM-UX/drwxx/raw/main/Framework%20diagram%20of%20an%20attribute%20recognitionmethod.png)
-## <p align="center">DETAILS OF IMPLEMENT</p>
-This project includes scripts for requirements, model training and testing.
 
-### Requirements
+## The Sensor folder contains the schematic diagrams of the sensors we designed 
+This sensor employs a multi-layer design strategy similar to human skin. From top to bottom, it consists of a encapsulation layer, a sensing layer, and a substrate layer, enabling it to simultaneously detect pressure, friction, and temperature.
 
-- Python 3.12
-- torch 2.7.0
-- CUDA 11.8
+## Material and Methods
 
-### Dataset
-We use the TVL dataset as the test and validation set for the object attribute recognition framework. The TVL dataset consists of the SSVTP dataset and the HCT dataset. The visual input is RGB images from a Logitech BRIO webcam, and the tactile input is tactile images from DIGIT. The SSVTP dataset comprises 4,587 pairs of visual and tactile images, while the HCT dataset comprises 39,154 pairs. For each pair of data in SSVTP, staff manually annotated the attribute information. For each pair of data in the HCT dataset, GPT-4V annotated the attributes, resulting in a dataset containing 43,741 pairs of visual-tactile images.
-For more details, see https://arxiv.org/abs/2402.13232
+### Fabrication of conductive polymer force-sensing units
+CB powder (Tanfeng Tech. Inc, China), MWCNTs powder (NACATE, China), and deionized water were mixed in a mass ratio of 5:2:100 and stirred thoroughly for 15 minutes to form a uniform dispersion. The PU sponge was then fully immersed in the dispersion for 1 hour to ensure that the conductive fillers formed a stable, continuous conductive network within the porous matrix. Subsequently, the impregnated PU sponge was dried in a vacuum oven at 70 °C for 3 hours and cut into 6 mm × 6 mm pieces to serve as independent force-sensing units.
 
-### Data Preparation
-Modify the dataset path in `dataloador.py`
-```bash
-python dataloador.py
-```
-### Model Training
-Use `MQTransformer_Uncertainty Loss_train.py` to train the model. Adjust parameters such as epoch and batch_size based on the training environment.
-```bash
-python MQTransformer_Uncertainty Loss_train.py
-```
-After training, the model will be saved in the specified directory.
+### Fabrication of electrodes and temperature-sensing unit
+The electrodes and temperature sensing units are integrated onto a flexible printed circuit board. Four independent and symmetrically distributed planar electrode regions are designed on the FPC, with each group corresponding to a force-sensing unit used to collect signals representing changes in the resistance of the conductive polymer during loading. A digital temperature sensor chip (BMP280, Bosch Semiconductors) is soldered with solder paste and mounted at the center of the FPC. It is connected to the signal acquisition system via a standard digital communication interface to enable synchronous temperature data acquisition.
 
-## Testing
-Use `result.py` to validate results on the test set.
-```bash
-python result.py
-```
+### Fabrication of the sensor encapsulation layer and Substrate, and sensor assembly
+During the preparation of the sensor’s encapsulation layer and substrate, the PDMS (Sylgard 184, Dow Corning) base material and curing agent were thoroughly mixed in a 10:1 ratio, poured into a 3D-printed PLA mold, and then vacuum-cured in a vacuum oven for 2 hours to completely remove air bubbles. The assembly was then cured at 70°C for 3 hours. After demolding, the PDMS encapsulation layer and substrate were obtained. Next, a conductive silver paste (CD02, Conduction) with a volume resistivity of 2×10⁻⁴ Ω·cm was used to bond the CB/MWCNTs/PU conductive polymer to the planar electrodes of the FPC; Finally, silicone rubber (V-705, Valigoo) was used to bond the various layers of the sensor, completing the overall assembly.
+
+## Code
+Specifically, “ADS1256” refers to the 24-bit ADC acquisition module code, “BMP280” refers to the temperature acquisition module code, “FT-CFRF” refers to the 3D force decoupling model code, and “Bi-LSTM hardness” refers to the hardness block classification model code.
+
+## Figure
+The figure section includes photos of our sensor models and prototypes, evaluation metrics for the three-force decoupling model, and prediction results for some of the test datasets.
 
