@@ -8,7 +8,7 @@
   
   Sensor model, fabrication method, control code, and model code. The following two images show the structure and prototype of our sensor.
 <div align=center>
-<img src="https://github.com/1051138574/Design-and-Evaluation-of-a-6-DoF-Wearable-Fingertip-Device-for-Haptic-Shape-Rendering/blob/main/picture/fig2a.png" alt="Image text" width="250" height="200"/>     <img src="https://github.com/1051138574/Design-and-Evaluation-of-a-6-DoF-Wearable-Fingertip-Device-for-Haptic-Shape-Rendering/blob/main/picture/fig2b3.png" alt="Image text" width="250" height="200"/>
+<img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/main/figure/fig1(a).jpg" alt="Image text" width="250" height="200"/>     <img src="https://github.com/AILM-UX/Multidimensional-Tactile-Sensor/main/figure/fig1(b).jpg" alt="Image text" width="250" height="200"/>
 </div>
 
 In this work, the framework we propose consists of two main component. The first part is the ST attention-based VTDF module, which enables organic interaction and fusion of input visual and tactile data, generating fused visual-tactile features that are fully interacted in terms of inter-modal and ST information. The second part is the cross-task attention-driven MTL module. The fused visual-tactile features obtained from the first part serve as shared features within the MTL module, facilitating inter-task information interaction and fusion to output recognition results for multiple object attributes.
